@@ -3,13 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wish</title>
+    <title>Fest Wishes😇</title>
     <link rel="stylesheet" type="text/css" href="bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="animate3.7.2.css"/>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <script src="jquery-3.4.1.min.js"></script>
+
+    <style>
+
+.main-Container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 90000;
+}
+
+.loader-div {
+    position: relative;
+    left: -4%;
+    top: -2%;
+    width: 60vw;
+    height: 40vh;
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .loader-div > span:nth-child(1) {
+        width: 30px;
+        height: 30px;
+        background-color: blue;
+        margin: 0 10px;
+        position: relative;
+        transition: all 0.5s ease-in-out;
+        animation: wave 1s ease-in-out infinite alternate-reverse;
+        animation-delay: 0.3s;
+    }
+
+    .loader-div > span:nth-child(2) {
+        width: 32px;
+        height: 32px;
+        background-color: green;
+        margin: 10px 10px;
+        position: relative;
+        transition: all 0.5s ease-in-out;
+        animation: wave 1s ease-in-out infinite alternate-reverse;
+        animation-delay: 1.8s;
+    }
+
+    .loader-div > span:nth-child(3) {
+        width: 30px;
+        height: 30px;
+        background-color: orangered;
+        margin: 0 10px;
+        position: relative;
+        transition: all 0.5s ease-in-out;
+        animation: wave 1s ease-in-out infinite alternate-reverse;
+        animation-delay: 0.3s;
+    }
+    </style>
 </head>
-<body oncontextmenu="return false" onkeydown="return false;" onmousedown="return false;">
+<body>
+    <div class="main-Container" id="mainLoader">
+        <div class="loader-div">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
     <div class="container-fluid main-div">
         <!-- <audio id="my_audio"  muted="muted" src="festibalVibes.mp3" loop="loop"></audio> -->
        
@@ -52,7 +119,7 @@
     </div>
     <audio autoplay>
         <source src="festibalVibes.mp3" type="audio/mpeg">
-    </audio
+        </audio>
     <script src="jquery-3.4.1.min.js"></script>
     <script>
         var curUserName='';
@@ -69,7 +136,7 @@
             else{
                 $('#userName').text("Manoj");
             }
-            //$("#my_audio").get(0).play();
+            //$("#my_audio").trigger('click');
         })
         function getUserName(){
             var user = prompt("Please enter your name:");
@@ -83,11 +150,18 @@
             }
         }
 
-        $(document).keydown(function(e){
-    if(e.which === 123){
-       return false;
-    }
-});
+        $(window).on('load', function() {
+            if ($('#mainLoader').length) {
+                $('#mainLoader').delay(100).fadeOut('slow', function() {
+                $(this).remove();
+            });
+            }
+        });
+
+        function shareMsg(){
+            var urlSending = `https://api.whatsapp.com/send?text=😇 *${curUserName}* has sent festival wishes to you!! %0A*Open Fast!!* 👇👇%0A https://manoj179.github.io/festwish.github.io/?${curUserName}`
+            window.open(urlSending, '_blank');
+        }
     </script>
 </body>
 </html>
