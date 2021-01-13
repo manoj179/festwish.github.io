@@ -117,9 +117,10 @@
             </div>
         </div>
     </div>
-    <audio autoplay>
+    <!-- <audio autoplay>
         <source src="festibalVibes.mp3" type="audio/mpeg">
-        </audio>
+        </audio> -->
+        <audio src="festibalVibes.mp3" id="my_audio" autoplay="autoplay"></audio>
     <script src="jquery-3.4.1.min.js"></script>
     <script>
         var curUserName='';
@@ -136,7 +137,7 @@
             else{
                 $('#userName').text("Manoj");
             }
-            //$("#my_audio").trigger('click');
+            $("#my_audio").trigger('click');
         })
         function getUserName(){
             var user = prompt("Please enter your name:");
@@ -156,6 +157,10 @@
                 $(this).remove();
             });
             }
+            var audio = document.getElementById("my_audio");
+            //audio.src = URL.createObjectURL("song.mp3");
+            //audio.load();
+            audio.play();
         });
 
         function shareMsg(){
