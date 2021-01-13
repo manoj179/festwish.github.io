@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wish</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="animate3.7.2.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<body oncontextmenu="return false" onkeydown="return false;" onmousedown="return false;">
+    <div class="container-fluid main-div">
+        <!-- <audio id="my_audio"  muted="muted" src="festibalVibes.mp3" loop="loop"></audio> -->
+       
+        <div class="head-container pull-right">
+            <div class="img-div">
+                <img src="images/kite-png (1).png" width="100%"/>
+            </div>
+        </div>
+        <div class="wish-list-body">
+            <div class="wish-img">
+                <div class="wish-list-left">
+                    <img src="images/rangoli-png.png" width="100%">
+                    <div class="wish-content">
+                    <span id="userName"></span>
+                    <span>Wishing</span>
+                    </div>
+                </div>
+            </div>
+            <div class="wish-text-content">
+                <div class="wish-img-content">
+                    <img src="images/suggi-pot-png.png" width="100%">
+                </div>
+                <div class="wish-event-content">
+                    <span>Happy</span>
+                    <span>Makara Sankranti</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div>
+                <button class="btn btn-sm btn-primary" onclick="getUserName();">Enter Your Name</button>
+            </div>
+            <div class="design-name">
+                <span>Designed By: </span><span>C M Manoj</span>
+            </div>
+            <div class="share">
+                <button class="btn btn-sm" onclick="shareMsg();"><img src="images/whatsapp_icon.svg" width="100%" alt=""></button>
+            </div>
+        </div>
+    </div>
+    <audio autoplay>
+        <source src="festibalVibes.mp3" type="audio/mpeg">
+    </audio
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+        var curUserName='';
+        $(document).ready(function(){
+            var url = window.location.href;
+            if(url.includes('?')){
+                var userName = url.split('?')[1];
+                $('#userName').text(userName);
+            }
+            else if(localStorage.getItem("username")!=null){
+                
+                $('#userName').text(localStorage.getItem("username"));
+            }
+            else{
+                $('#userName').text("Manoj");
+            }
+            //$("#my_audio").get(0).play();
+        })
+        function getUserName(){
+            var user = prompt("Please enter your name:");
+            if(user!=null && user!=""){
+                localStorage.setItem("username",user);
+                $('#userName').text(user);
+                curUserName= user;
+            }
+            else{
+                $('#userName').text("Manoj");
+            }
+        }
+
+        $(document).keydown(function(e){
+    if(e.which === 123){
+       return false;
+    }
+});
+    </script>
+</body>
+</html>
