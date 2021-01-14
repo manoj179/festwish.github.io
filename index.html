@@ -115,7 +115,7 @@
             <div class="share">
                 <button class="btn btn-sm" onclick="shareMsg();"><img src="images/whatsapp_icon.svg" width="100%" alt=""></button>
             </div>
-            <div class="" style="display: none;">
+            <div class="" >
                 <button class="btn btn-sm" onclick="playAudio();">Play</button>
             </div>
         </div>
@@ -123,7 +123,7 @@
     <!-- <audio autoplay>
         <source src="festibalVibes.mp3" type="audio/mpeg">
         </audio> -->
-        <audio src="https://github.com/manoj179/festwish.github.io/festibalVibes.mp3" id="my_audio"  autoplay="autoplay"></audio>
+        <audio src="https://manoj179.github.io/festwish.github.io/festibalVibes.mp3" id="my_audio"  autoplay="autoplay"></audio>
     <script src="jquery-3.4.1.min.js"></script>
     <script>
         var curUserName='';
@@ -149,7 +149,8 @@
             else{
                 $('#userName').text("Manoj");
             }
-            $("#my_audio").trigger('click');
+            //$("#my_audio").trigger('click');
+            playAudio();
         })
 
         function playAudio()
@@ -173,16 +174,17 @@
             if ($('#mainLoader').length) {
                 $('#mainLoader').delay(100).fadeOut('slow', function() {
                 $(this).remove();
+                
             });
             }
 
-            setTimeout(900,function(){
+            setTimeout(1200,function(){
                 // var audio = document.getElementById("my_audio");
                 // audio.src = URL.createObjectURL("festibalVibes.mp3");
                 // audio.load();
                 // audio.play();
 
-                playAudio();
+                
             })
             
         });
