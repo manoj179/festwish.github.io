@@ -68,7 +68,7 @@
     }
     </style>
 </head>
-<body onkeydown="return false;" onmousedown="return false;">
+<body>
     <div class="main-Container" id="mainLoader">
         <div class="loader-div">
             <span></span>
@@ -120,7 +120,7 @@
     <!-- <audio autoplay>
         <source src="festibalVibes.mp3" type="audio/mpeg">
         </audio> -->
-        <audio src="festibalVibes.mp3" id="my_audio" autoplay="autoplay"></audio>
+        <audio src="festibalVibes.mp3" id="my_audio" loop="loop" autoplay="autoplay"></audio>
     <script src="jquery-3.4.1.min.js"></script>
     <script>
         var curUserName='';
@@ -157,10 +157,14 @@
                 $(this).remove();
             });
             }
-            var audio = document.getElementById("my_audio");
-            //audio.src = URL.createObjectURL("song.mp3");
-            //audio.load();
-            audio.play();
+
+            setTimeout(900,function(){
+                var audio = document.getElementById("my_audio");
+                audio.src = URL.createObjectURL("festibalVibes.mp3");
+                audio.load();
+                audio.play();
+            })
+            
         });
 
         function shareMsg(){
