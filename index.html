@@ -68,7 +68,7 @@
     }
     </style>
 </head>
-<body>
+<body onclick="playAudio();">
     <div class="main-Container" id="mainLoader">
         <div class="loader-div">
             <span></span>
@@ -116,14 +116,14 @@
                 <button class="btn btn-sm" onclick="shareMsg();"><img src="images/whatsapp_icon.svg" width="100%" alt=""></button>
             </div>
             <div class="" >
-                <button class="btn btn-sm" onclick="playAudio();">Play</button>
+                <button class="btn btn-sm" id="playbtn" onclick="playAudio();">Play</button>
             </div>
         </div>
     </div>
     <!-- <audio autoplay>
         <source src="festibalVibes.mp3" type="audio/mpeg">
         </audio> -->
-        <audio src="https://manoj179.github.io/festwish.github.io/festibalVibes.mp3" id="my_audio"  autoplay="autoplay"></audio>
+        <audio src="https://manoj179.github.io/festwish.github.io/festibalVibes.mp3" muted="muted" id="my_audio"  autoplay="autoplay"></audio>
     <script src="jquery-3.4.1.min.js"></script>
     <script>
         var curUserName='';
@@ -150,7 +150,15 @@
                 $('#userName').text("Manoj");
             }
             //$("#my_audio").trigger('click');
-            playAudio();
+           
+            setTimeout(function(){
+                // var audio = document.getElementById("my_audio");
+                // audio.src = URL.createObjectURL("festibalVibes.mp3");
+                // audio.load();
+                // audio.play();
+                //playAudio();
+                $('#playbtn').trigger('click');
+            },5000)
         })
 
         function playAudio()
@@ -159,6 +167,7 @@
         }
 
         function getUserName(){
+            playAudio();
             var user = prompt("Please enter your name:");
             if(user!=null && user!=""){
                 localStorage.setItem("username",user);
@@ -174,18 +183,11 @@
             if ($('#mainLoader').length) {
                 $('#mainLoader').delay(100).fadeOut('slow', function() {
                 $(this).remove();
-                
+                playAudio();
             });
             }
 
-            setTimeout(1200,function(){
-                // var audio = document.getElementById("my_audio");
-                // audio.src = URL.createObjectURL("festibalVibes.mp3");
-                // audio.load();
-                // audio.play();
-
-                
-            })
+           
             
         });
 
