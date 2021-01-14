@@ -115,15 +115,27 @@
             <div class="share">
                 <button class="btn btn-sm" onclick="shareMsg();"><img src="images/whatsapp_icon.svg" width="100%" alt=""></button>
             </div>
+            <div class="" style="display: none;">
+                <button class="btn btn-sm" onclick="playAudio();">Play</button>
+            </div>
         </div>
     </div>
     <!-- <audio autoplay>
         <source src="festibalVibes.mp3" type="audio/mpeg">
         </audio> -->
-        <audio src="festibalVibes.mp3" id="my_audio" loop="loop" autoplay="autoplay"></audio>
+        <audio src="https://github.com/manoj179/festwish.github.io/festibalVibes.mp3" id="my_audio"  autoplay="autoplay"></audio>
     <script src="jquery-3.4.1.min.js"></script>
     <script>
         var curUserName='';
+
+        var source = "festibalVibes.mp3";
+        var audio = new Audio(); // use the constructor in JavaScript, just easier that way
+        audio.addEventListener("load", function() {
+        audio.play();
+        }, true);
+        audio.src = source;
+        audio.autoplay = true; // add this
+
         $(document).ready(function(){
             var url = window.location.href;
             if(url.includes('?')){
@@ -139,6 +151,12 @@
             }
             $("#my_audio").trigger('click');
         })
+
+        function playAudio()
+        {
+            audio.play();
+        }
+
         function getUserName(){
             var user = prompt("Please enter your name:");
             if(user!=null && user!=""){
@@ -159,10 +177,12 @@
             }
 
             setTimeout(900,function(){
-                var audio = document.getElementById("my_audio");
-                audio.src = URL.createObjectURL("festibalVibes.mp3");
-                audio.load();
-                audio.play();
+                // var audio = document.getElementById("my_audio");
+                // audio.src = URL.createObjectURL("festibalVibes.mp3");
+                // audio.load();
+                // audio.play();
+
+                playAudio();
             })
             
         });
